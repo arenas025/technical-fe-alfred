@@ -13,15 +13,24 @@ export async function GET(req: NextRequest) {
   }
 
   const params = req.nextUrl.searchParams;
-  const offset = params.get("offset") ?? 0;
-  const limit = params.get("limit") ?? 100;
+  const page = params.get("page") ?? "0";
+  const limit = params.get("limit") ?? "100";
+
+  const parsedPage = parseInt(page);
+  const parsedLimit = parseInt(limit);
 
   try {
+    if (isNaN(parsedPage) || isNaN(parsedLimit)) {
+      return NextResponse.json(
+        { error: "Invalid page or limit" },
+        { status: 400 }
+      );
+    }
     const response = await axios.get(`${API_URL}/airports`, {
       params: {
         access_key: API_KEY,
-        offset,
-        limit,
+        offset: parsedPage * 100,
+        limit: parsedLimit,
       },
     });
     return NextResponse.json(response.data.data);

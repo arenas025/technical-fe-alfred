@@ -2,13 +2,10 @@ import axios from "axios";
 
 const API_URL = "/api/airports";
 
-interface fetchAirportsParams {
-  offset: number;
-}
 
-export const fetchAirports = async (params: fetchAirportsParams) => {
+export const fetchAirports = async (page: number) => {
   try {
-    const response = await axios.get(API_URL, { params });
+    const response = await axios.get(API_URL, { params: { page } });
     return response.data;
   } catch (error) {
     console.error("Error fetching airports from API:", error);

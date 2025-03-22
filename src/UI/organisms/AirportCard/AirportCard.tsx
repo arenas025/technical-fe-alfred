@@ -14,9 +14,9 @@ const AirportCard = ({
   iataCodeCity,
 }: AirportCardProps) => {
   return (
-    <div className=" cursor-pointer lg:h-[235px]  md:max-w-[1500px] w-[95%] lg:border-white lg:border-[1px] lg:rounded-[8px] flex items-center justify-center  ">
-      <div className=" p-2 items-center lg:items-start bg-linear-to-r flex lg:p-10 flex-row lg:flex-col justify-between h-full w-full from-[#3F495F] border-white lg:border-none border-[1px] rounded-[8px] to-[#0E1934]">
-        <div className="flex flex-col gap-2  w-[80%] lg:w-[90%] break-words">
+    <div className=" cursor-pointer  md:h-[235px]  md:max-w-[1500px] w-[95%] md:border-white md:border-[1px] md:rounded-[8px] flex items-center justify-center  ">
+      <div className=" p-2 items-center md:items-start bg-linear-to-r flex md:p-10 flex-row md:flex-col justify-between h-full w-full from-[#3F495F] border-white md:border-none border-[1px] rounded-[8px] to-[#0E1934]">
+        <div className="flex flex-col gap-2  w-[80%] md:w-[90%] break-words">
           <p className="text-white text-lg font-bold font-inter lg:text-xl">
             {name}
           </p>
@@ -28,8 +28,8 @@ const AirportCard = ({
           {iataCodeCity}
         </p>
       </div>
-      <div className="hidden lg:rounded-r-[8px] lg:flex bg-[url('/image-card.webp')] bg-cover bg-center w-full  h-full  bg-no-repeat relative">
-        <div className="bg-[#0E1934]  lg:rounded-r-[8px] z-10 opacity-90 w-full h-full absolute top-0 left-0" />
+      <div className="hidden md:rounded-r-[8px] md:flex bg-[url('/image-card.webp')] bg-cover bg-center w-full  h-full  bg-no-repeat relative">
+        <div className="bg-[#0E1934]  md:rounded-r-[8px] z-10 opacity-90 w-full h-full absolute top-0 left-0" />
         <Image
           src="/airplane-icon.svg"
           alt="airport"
