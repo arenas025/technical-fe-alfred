@@ -11,10 +11,12 @@ import Header from "@/UI/molecules/Header/Header";
 import AirportCard from "@/UI/organisms/AirportCard/AirportCard";
 import Button from "@/UI/atoms/Button/Button";
 import Spinner from "@/UI/atoms/Spinner/Spinner";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const { getPaginatedAirports, getAirports } = useGetAirports();
   const isLoading = useAppStore((state) => state.isLoading);
+  const setSelectedAirport = useAppStore((state) => state.setSelectedAirport);
   const paginatedAirports = useAppStore((state) => state.paginatedAirports);
   const [page, setPage] = useState(0);
 
@@ -26,15 +28,21 @@ export default function Home() {
     getAirports(0);
   }, []);
 
+  const router = useRouter();
+
   return (
     <div className="relative flex flex-col items-center justify-evenly h-screen ">
       <Header />
 
       {!isLoading ? (
         <>
-          <div className="grid h-[80%] justify-items-center w-[100%] mt-[100px] overflow-y-auto md:grid-cols-2 grid-cols-1 md:px-10 gap-4">
+          <div className="grid h-[80%] justify-items-center w-[100%] mt-[100px] py-[20px] overflow-y-auto md:grid-cols-2 grid-cols-1 md:px-10 gap-4">
             {paginatedAirports.map((airport, index) => (
               <AirportCard
+                onClick={() => {
+                  setSelectedAirport(airport);
+                  router.push(`/airport/${airport.id}`);
+                }}
                 key={index}
                 city={airport.country_iso2}
                 country={airport.country_name ?? "Unknown"}

@@ -1,7 +1,7 @@
 const SearchBar = () => {
   return (
     <div className="flex w-[60%] justify-evenly items-center gap-4">
-      <div className="flex items-center gap-2 bg-white lg:rounded-2xl rounded-xl px-2 p-[4px]">
+      <div className="flex w-[60%] items-center gap-2 bg-white lg:rounded-2xl rounded-xl px-2 p-[4px]">
         <input
           type="text"
           placeholder="Buscar aeropuertos..."

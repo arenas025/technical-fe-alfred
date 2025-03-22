@@ -19,9 +19,21 @@ export const useGetAirports = () => {
     async (offset: number) => {
       setIsLoading(true);
       try {
-        const response = await fetchAirports(offset);
-        setAllAirports(response);
-        setPaginatedAirports(response.slice(0, CALLS_PER_PAGE_UI));
+        const localStorageAirports = JSON.parse(
+          localStorage.getItem("appStore") ?? "{}"
+        );
+
+        const areAirportsInLocalStorage =
+          localStorageAirports.state.allAirports.length !== 0;
+
+        const isRefreshWithAirportsInLocalStorage =
+          areAirportsInLocalStorage && offset === 0;
+
+        if (!isRefreshWithAirportsInLocalStorage) {
+          const response = await fetchAirports(offset);
+          setAllAirports(response);
+          setPaginatedAirports(response.slice(0, CALLS_PER_PAGE_UI));
+        }
       } catch (error) {
         console.error("Error in useGetAirports:", error);
       } finally {

@@ -1,6 +1,6 @@
 // TP
 import { create } from "zustand";
-import { devtools } from "zustand/middleware";
+import { createJSONStorage, devtools, persist } from "zustand/middleware";
 
 // BL
 import { AirportSliceInterface, createAirportSlice } from "./airportSlice";
@@ -15,14 +15,20 @@ type CombinedTypeSlice = AirportSliceInterface & AppStoreInterface;
 
 export const useAppStore = create<CombinedTypeSlice>()(
   devtools(
-    (...a) => ({
-      ...createAirportSlice(...a),
-      ...createAppSlice(...a),
-    }),
-    {
-      name: "appStore",
-      version: 0,
-    }
+    persist(
+      (...a) => ({
+        ...createAirportSlice(...a),
+        ...createAppSlice(...a),
+      }),
+      {
+        name: "appStore",
+        version: 0,
+        storage: createJSONStorage(() => localStorage),
+        partialize: (state) => ({
+          allAirports: state.allAirports,
+        }),
+      }
+    )
   )
 );
 

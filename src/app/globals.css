@@ -10,6 +10,7 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  height: 100vh;
   scrollbar-width: 100px;
   scrollbar-color: #00F9FF transparent;
 }

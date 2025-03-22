@@ -5,6 +5,7 @@ interface AirportCardProps {
   country: string;
   name: string;
   iataCodeCity: string;
+  onClick: () => void;
 }
 
 const AirportCard = ({
@@ -12,11 +13,15 @@ const AirportCard = ({
   country,
   name,
   iataCodeCity,
+  onClick,
 }: AirportCardProps) => {
   return (
-    <div className=" cursor-pointer  md:h-[235px]  md:max-w-[1500px] w-[95%] md:border-white md:border-[1px] md:rounded-[8px] flex items-center justify-center  ">
-      <div className=" p-2 items-center md:items-start bg-linear-to-r flex md:p-10 flex-row md:flex-col justify-between h-full w-full from-[#3F495F] border-white md:border-none border-[1px] rounded-[8px] to-[#0E1934]">
-        <div className="flex flex-col gap-2  w-[80%] md:w-[90%] break-words">
+    <div
+      onClick={onClick}
+      className="  hover:scale-105 transition-all duration-300 cursor-pointer  md:h-[235px]  md:max-w-[1500px] w-[95%] md:border-white md:border-[1px] md:rounded-[8px] flex items-center justify-center  "
+    >
+      <div className=" p-2 md:justify-between md:gap-9 md:w-[500px] lg:w-[90%] items-center md:items-start bg-linear-to-r flex md:p-5 lg:pl-10 flex-row md:flex-col justify-between h-full w-full from-[#3F495F] border-white md:border-none border-[1px] rounded-[8px] to-[#0E1934]">
+        <div className="flex flex-col gap-2  w-[80%] md:w-[95%] break-words">
           <p className="text-white text-lg font-bold font-inter lg:text-xl">
             {name}
           </p>

@@ -21,7 +21,7 @@ const Button = ({
       return (
         <button
           className={cn(
-            "bg-linear-to-r  lg:w-36 max-w-[300px] font-inter border-white border-[1px] from-[#0060FF] to-[#00FFE7]  px-4 py-1 rounded-md",
+            "bg-linear-to-r  cursor-pointer lg:w-36 max-w-[300px] font-inter border-white border-[1px] from-[#0060FF] to-[#00FFE7]  px-4 py-1 rounded-md",
             className
           )}
         >
@@ -34,7 +34,7 @@ const Button = ({
       return (
         <button
           className={cn(
-            "bg-[#0060FF] font-montserrat p-1 rounded-md w-[100px]",
+            "bg-[#0060FF] cursor-pointer font-montserrat p-1 rounded-md w-[100px]",
             className
           )}
           onClick={onClick}
