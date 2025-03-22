@@ -10,6 +10,8 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  scrollbar-width: 100px;
+  scrollbar-color: #00F9FF transparent;
 }
 
 .gradient-font{
