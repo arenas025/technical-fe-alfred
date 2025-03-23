@@ -20,6 +20,7 @@ const Button = ({
     case "search":
       return (
         <button
+          onClick={onClick}
           className={cn(
             "bg-linear-to-r  cursor-pointer lg:w-36 max-w-[300px] font-inter border-white border-[1px] from-[#0060FF] to-[#00FFE7]  px-4 py-1 rounded-md",
             className
@@ -42,6 +43,12 @@ const Button = ({
           <p className={cn("text-white font-bold text-base", classNameText)}>
             {text}
           </p>
+        </button>
+      );
+    default:
+      return (
+        <button className={cn("bg-white", className)} onClick={onClick}>
+          {text}
         </button>
       );
   }

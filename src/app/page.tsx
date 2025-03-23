@@ -2,16 +2,17 @@
 
 // TP
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+
 // BL
 import { useGetAirports } from "@/lib/hooks/useGetAirports";
 import useAppStore from "@/lib/store/appStore";
 
 // UI
 import Header from "@/UI/molecules/Header/Header";
-import AirportCard from "@/UI/organisms/AirportCard/AirportCard";
 import Button from "@/UI/atoms/Button/Button";
 import Spinner from "@/UI/atoms/Spinner/Spinner";
-import { useRouter } from "next/navigation";
+import GeneralAirportCard from "@/UI/organisms/GeneralAirportInfoCard/GeneralAirportCard";
 
 export default function Home() {
   const { getPaginatedAirports, getAirports } = useGetAirports();
@@ -38,7 +39,7 @@ export default function Home() {
         <>
           <div className="grid h-[80%] justify-items-center w-[100%] mt-[100px] py-[20px] overflow-y-auto md:grid-cols-2 grid-cols-1 md:px-10 gap-4">
             {paginatedAirports.map((airport, index) => (
-              <AirportCard
+              <GeneralAirportCard
                 onClick={() => {
                   setSelectedAirport(airport);
                   router.push(`/airport/${airport.id}`);

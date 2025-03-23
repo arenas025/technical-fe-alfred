@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`${montserrat.variable} ${inter.variable} antialiased`}>
-        <div className="absolute inset-0 bg-[#020D20] opacity-70" />
+        <div className="absolute z-[-1] inset-0 bg-[#020D20] opacity-70" />
         {children}
       </body>
     </html>

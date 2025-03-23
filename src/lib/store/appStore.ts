@@ -26,6 +26,7 @@ export const useAppStore = create<CombinedTypeSlice>()(
         storage: createJSONStorage(() => localStorage),
         partialize: (state) => ({
           allAirports: state.allAirports,
+          selectedAirport: state.selectedAirport,
         }),
       }
     )
