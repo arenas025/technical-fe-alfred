@@ -1,5 +1,6 @@
 "use client";
 
+// TP
 import React, { useEffect, useRef } from "react";
 import type L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -13,6 +14,7 @@ const Map = ({
 }) => {
   const mapRef = useRef<L.Map | null>(null);
 
+  //extract ?
   useEffect(() => {
     import("leaflet").then((L) => {
       if (mapRef.current !== null) return;
@@ -28,12 +30,11 @@ const Map = ({
         icon: L.icon({
           iconAnchor: [10, 10],
           iconSize: [20, 20],
-          iconUrl: "https://cdn-icons-png.flaticon.com/256/854/854878.png",
+          iconUrl: "https://www.svgrepo.com/show/302636/map-marker.svg",
         }),
       }).addTo(mapRef.current);
     });
 
-    // Cleanup function
     return () => {
       mapRef.current?.remove();
     };
@@ -43,9 +44,10 @@ const Map = ({
     <div
       id="map"
       style={{
-        width: "100%",
+        width: "95%",
         height: "600px",
         marginBottom: 50,
+        borderRadius: 10,
         marginTop: 50,
       }}
     ></div>

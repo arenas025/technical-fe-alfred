@@ -1,4 +1,4 @@
-import React from "react";
+// UI
 import Tab from "@/UI/atoms/Tab/Tab";
 
 const Tabs = ({
