@@ -44,12 +44,12 @@ const DetailedAirportCard = ({
   ];
   return (
     <AirportCard
-      className="hover:scale-none md:h-auto cursor-default"
+      className="hover:scale-none md:h-[350px] cursor-default"
       classNameContainerChildren=" justify-center items-center gap-10 py-10 flex-col"
       hasIcon={false}
       onClick={() => {}}
     >
-      <div className="flex justify-center lg:items-start items-center gap-5 w-[100%] md:w-[95%] break-words">
+      <div className="flex justify-center lg:justify-start lg:items-start items-center gap-5 w-[100%] md:w-[95%] break-words">
         <Image
           src="/info-circle.svg"
           className="lg:w-[55px] lg:h-[55px] w-6 h-6 "

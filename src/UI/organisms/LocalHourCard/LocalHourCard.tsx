@@ -9,7 +9,7 @@ const LocalHourCard = () => {
   return (
     <AirportCard
       isDetailCard
-      className="hover:scale-none md:h-fit cursor-default"
+      className="md:h-[200px]"
       classNameContainerChildren="justify-center  items-center gap-10 py-10 flex-col"
       hasIcon={false}
       onClick={() => {}}
