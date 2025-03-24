@@ -13,7 +13,6 @@ import Header from "@/UI/molecules/Header/Header";
 import Spinner from "@/UI/atoms/Spinner/Spinner";
 import GeneralAirportCard from "@/UI/organisms/GeneralAirportInfoCard/GeneralAirportCard";
 import Pagination from "@/UI/organisms/Pagination/Pagination";
-import Button from "@/UI/atoms/Button/Button";
 import RefreshAirportsComponent from "@/UI/organisms/RefreshAirportsComponent/RefreshAirportsComponent";
 
 export default function Home() {
@@ -45,8 +44,9 @@ export default function Home() {
 
       {isLoading ? (
         <Spinner />
-      ) : paginatedAirports.length > 0 ? (
-        noResultsFound ? (
+      ) : (
+        paginatedAirports.length > 0 &&
+        (noResultsFound ? (
           <RefreshAirportsComponent
             isCleaningFilter
             text="No hay aeropuertos que coincidan con tu busqueda"
@@ -74,22 +74,7 @@ export default function Home() {
               setPage={setPage}
             />
           </>
-        )
-      ) : (
-        <div className="flex gap-3 flex-col items-center justify-center h-screen">
-          <p className="text-2xl text-white font-bold">
-            No hay aeropuertos para mostrar
-          </p>
-          <Button
-            className="w-[400px]"
-            text="Ver todos los aeropuertos"
-            variant="pagination"
-            onClick={() => {
-              setPage(0);
-              getPaginatedAirports(0);
-            }}
-          />
-        </div>
+        ))
       )}
     </div>
   );

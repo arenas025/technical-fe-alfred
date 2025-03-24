@@ -39,6 +39,7 @@ const SearchBar = () => {
           onChange={(e) => {
             setSearch(e.target.value);
           }}
+          data-testid="search-input"
           type="text"
           value={search}
           placeholder="Buscar aeropuertos..."
@@ -58,7 +59,12 @@ const SearchBar = () => {
           </div>
         }
       </div>
-      <Button type="submit" text="Buscar" variant="search" />
+      <Button
+        data-testid="search-button"
+        type="submit"
+        text="Buscar"
+        variant="search"
+      />
     </form>
   );
 };

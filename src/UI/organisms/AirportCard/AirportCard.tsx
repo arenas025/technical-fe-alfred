@@ -11,6 +11,7 @@ interface AirportCardProps {
   className?: string;
   classNameContainerChildren?: string;
   isDetailCard?: boolean;
+  id?: string;
 }
 
 const AirportCard = ({
@@ -20,9 +21,11 @@ const AirportCard = ({
   className,
   classNameContainerChildren,
   isDetailCard,
+  id,
 }: AirportCardProps) => {
   return (
     <div
+      data-testid={`airport-card-${id}`}
       onClick={onClick}
       className={cn(
         "hover:scale-105  md:overflow-hidden transition-all duration-300 cursor-pointer  md:h-[235px]  md:max-w-[1500px] w-[95%] md:border-white md:border-[1px] md:rounded-[8px] flex items-center justify-center",
