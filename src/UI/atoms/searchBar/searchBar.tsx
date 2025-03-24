@@ -23,19 +23,23 @@ const SearchBar = () => {
     }
   }, [search, getPaginatedAirportsWithSearch, setPage, setSearchFilterApplied]);
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (search.length !== 0) {
+      getPaginatedAirportsWithSearch(0, search);
+      setSearchFilterApplied(true);
+    }
+  };
+
   return (
     <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        if (search.length !== 0) {
-          getPaginatedAirportsWithSearch(0, search);
-          setSearchFilterApplied(true);
-        }
-      }}
+      data-testid="search-bar"
+      onSubmit={handleSubmit}
       className="flex w-full md:w-[60%] justify-evenly items-center gap-4"
     >
       <div className="flex w-[65%] md:w-[60%] items-center gap-2 bg-white lg:rounded-2xl rounded-xl px-2 p-[4px]">
         <input
+          data-testid="search-input"
           onChange={(e) => {
             setSearch(e.target.value);
           }}
@@ -62,10 +66,10 @@ const SearchBar = () => {
         }
       </div>
       <Button
-        data-testid="search-button"
         type="submit"
         text="Buscar"
         variant="search"
+        data-testid="search-button"
       />
     </form>
   );
