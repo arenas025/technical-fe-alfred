@@ -17,7 +17,7 @@ Before running the project, ensure you have the following installed:
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/arenas025/technical-fe-alfred
-   cd your-repo-name
+   cd technical-fe-alfred
    ```
 
 2. **Install dependencies:**
@@ -28,8 +28,10 @@ Before running the project, ensure you have the following installed:
 3. **Set up environment variables:**
    Create a `.env` file in the root folder and add the following:
    ```env
-   API_KEY=9e140901d3ece2716855f44cdddb55d3
+   API_KEY=ac38d015299dfaa9e7af3797fee050a8
    ```
+
+   Take into account that the API only have a limit of 100 requests, so in case you run out of requests you can create a new account and use the new API key here [here](https://aviationstack.com/signup/free)
 
 ---
 
