@@ -11,7 +11,7 @@ const Tabs = ({
   activeTab: string;
 }) => {
   return (
-    <div className="flex justify-between w-[95%] px-4 py-2 rounded-lg  bg-[#3F495F]">
+    <div className="flex max-w-[1500px] justify-between w-full md:w-[95%] md:px-4 px-1 py-2 rounded-lg  bg-[#3F495F]">
       {headers.map((header) => (
         <Tab
           key={header}

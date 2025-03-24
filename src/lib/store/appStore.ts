@@ -27,6 +27,7 @@ export const useAppStore = create<CombinedTypeSlice>()(
         partialize: (state) => ({
           allAirports: state.allAirports,
           selectedAirport: state.selectedAirport,
+          page: state.page,
         }),
       }
     )

@@ -46,6 +46,7 @@ const Map = ({
       style={{
         width: "95%",
         height: "600px",
+        maxWidth: 1550,
         marginBottom: 50,
         borderRadius: 10,
         marginTop: 50,

@@ -25,7 +25,7 @@ const AirportCard = ({
     <div
       onClick={onClick}
       className={cn(
-        "hover:scale-105 transition-all duration-300 cursor-pointer  md:h-[235px]  md:max-w-[1500px] w-[95%] md:border-white md:border-[1px] md:rounded-[8px] flex items-center justify-center",
+        "hover:scale-105  md:overflow-hidden transition-all duration-300 cursor-pointer  md:h-[235px]  md:max-w-[1500px] w-[95%] md:border-white md:border-[1px] md:rounded-[8px] flex items-center justify-center",
         className,
         isDetailCard && "md:h-fit"
       )}

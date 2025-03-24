@@ -87,9 +87,17 @@ const AirportDetails = () => {
 
   return (
     <div className="flex min-h-screen w-full flex-col items-center justify-start ">
-      <p className="gradient-font text-[80px] mb-9 font-bold font-inter">
-        {selectedAirport.airport_name}
-      </p>
+      <div className="flex flex-col items-center mb-9 mt-5  justify-center">
+        <p
+          onClick={() => router.push("/")}
+          className="text-white underline cursor-pointer font-bold text-xl"
+        >
+          Volver a la pagina principal
+        </p>
+        <p className="gradient-font text-[80px]  font-bold font-inter">
+          {selectedAirport.airport_name}
+        </p>
+      </div>
       <div className="flex  w-[95%] gap-16 flex-col items-center justify-start">
         <Tabs
           headers={headers}

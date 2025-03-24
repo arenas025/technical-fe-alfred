@@ -1,7 +1,7 @@
 // BL
 import { cn } from "@/lib/utils/utils";
 
-interface ButtonProps {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   onClick: () => void;
   className?: string;
   text?: string;
@@ -15,11 +15,13 @@ const Button = ({
   variant,
   text,
   classNameText,
+  ...props
 }: ButtonProps) => {
   switch (variant) {
     case "search":
       return (
         <button
+          {...props}
           onClick={onClick}
           className={cn(
             "bg-linear-to-r  cursor-pointer lg:w-36 max-w-[300px] font-inter border-white border-[1px] from-[#0060FF] to-[#00FFE7]  px-4 py-1 rounded-md",
@@ -34,6 +36,7 @@ const Button = ({
     case "pagination":
       return (
         <button
+          {...props}
           className={cn(
             "bg-[#0060FF] cursor-pointer font-montserrat p-1 rounded-md w-[100px]",
             className

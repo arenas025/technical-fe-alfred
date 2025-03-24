@@ -61,8 +61,27 @@ export const useGetAirports = () => {
     [setPaginatedAirports, airports, getAirports]
   );
 
+  const getPaginatedAirportsWithSearch = useCallback(
+    async (offset: number, search: string) => {
+      const from = CALLS_PER_PAGE_UI * offset;
+      const to = from + CALLS_PER_PAGE_UI;
+
+      const filteredAirports = airports.filter((airport) => {
+        return (
+          airport.iata_code.toLowerCase().includes(search.toLowerCase()) ||
+          airport.airport_name.toLowerCase().includes(search.toLowerCase())
+        );
+      });
+
+      const paginatedAirports = filteredAirports.slice(from, to);
+      setPaginatedAirports(paginatedAirports);
+    },
+    [setPaginatedAirports, airports]
+  );
+
   return {
     getAirports,
     getPaginatedAirports,
+    getPaginatedAirportsWithSearch,
   };
 };

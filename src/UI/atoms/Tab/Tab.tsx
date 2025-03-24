@@ -9,14 +9,14 @@ interface TabProps {
 const Tab = ({ text, isActive, onClick }: TabProps) => {
   return (
     <div
-      className={`cursor-pointer px-4 py-2 ${
+      className={`cursor-pointer  px-4 py-2 ${
         isActive
-          ? `text-xl text-center w-1/3 rounded-lg font-bold text-white bg-[#0060FF]`
-          : `text-[#A2A2A2] text-center w-1/3`
+          ? `md:text-xl text-lg text-center w-1/3 rounded-lg font-bold text-white bg-[#0060FF]`
+          : `text-[#A2A2A2]  text-center w-1/3`
       }`}
       onClick={onClick}
     >
-      {text}
+      <p className="text-center m-auto">{text}</p>
     </div>
   );
 };

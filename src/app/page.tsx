@@ -1,7 +1,7 @@
 "use client";
 
 // TP
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 // BL
@@ -10,16 +10,17 @@ import useAppStore from "@/lib/store/appStore";
 
 // UI
 import Header from "@/UI/molecules/Header/Header";
-import Button from "@/UI/atoms/Button/Button";
 import Spinner from "@/UI/atoms/Spinner/Spinner";
 import GeneralAirportCard from "@/UI/organisms/GeneralAirportInfoCard/GeneralAirportCard";
+import Pagination from "@/UI/organisms/Pagination/Pagination";
 
 export default function Home() {
   const { getPaginatedAirports, getAirports } = useGetAirports();
   const isLoading = useAppStore((state) => state.isLoading);
   const setSelectedAirport = useAppStore((state) => state.setSelectedAirport);
   const paginatedAirports = useAppStore((state) => state.paginatedAirports);
-  const [page, setPage] = useState(0);
+  const page = useAppStore((state) => state.page);
+  const setPage = useAppStore((state) => state.setPage);
 
   useEffect(() => {
     getPaginatedAirports(page);
@@ -52,21 +53,7 @@ export default function Home() {
               />
             ))}
           </div>
-          <div className="flex justify-center py-5 items-center bg-transparent gap-4">
-            {page > 0 && (
-              <Button
-                text="Atras"
-                variant="pagination"
-                onClick={() => setPage(page - 1)}
-              />
-            )}
-            <p className="text-white font-bold text-base">{page + 1}</p>
-            <Button
-              text="Adelante"
-              variant="pagination"
-              onClick={() => setPage(page + 1)}
-            />
-          </div>
+          <Pagination page={page} setPage={setPage} />
         </>
       ) : (
         <Spinner />
