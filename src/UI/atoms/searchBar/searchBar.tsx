@@ -34,7 +34,7 @@ const SearchBar = () => {
       }}
       className="flex w-full md:w-[60%] justify-evenly items-center gap-4"
     >
-      <div className="flex w-[60%] items-center gap-2 bg-white lg:rounded-2xl rounded-xl px-2 p-[4px]">
+      <div className="flex w-[65%] md:w-[60%] items-center gap-2 bg-white lg:rounded-2xl rounded-xl px-2 p-[4px]">
         <input
           onChange={(e) => {
             setSearch(e.target.value);
@@ -55,7 +55,9 @@ const SearchBar = () => {
             }}
             className="cursor-pointer rounded-full h-full px-5 bg-red-300"
           >
-            <p className="text-white font-bold ">Limpiar</p>
+            <p className="text-white lg:text-base text-sm font-bold ">
+              Limpiar
+            </p>
           </div>
         }
       </div>

@@ -31,7 +31,7 @@ const LocationAirportCard = ({
   ];
   return (
     <AirportCard
-      className="hover:scale-none md:h-fit cursor-default"
+      className="hover:scale-none md:h-[250px] cursor-default"
       classNameContainerChildren="items-center md:items-start gap-10 py-10 flex-col"
       hasIcon={false}
       onClick={() => {}}
