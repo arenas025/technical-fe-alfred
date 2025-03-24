@@ -11,6 +11,12 @@ export interface AirportSliceInterface {
   selectedAirport: AirportInterface | null;
   setSelectedAirport: (airport: AirportInterface | null) => void;
 
+  filteredAirports: AirportInterface[];
+  setFilteredAirports: (airport: AirportInterface[]) => void;
+
+  totalAirports: number;
+  setTotalAirports: (total: number) => void;
+
   page: number;
   setPage: (page: number) => void;
 }
@@ -31,4 +37,10 @@ export const createAirportSlice: StateCreator<AirportSliceInterface> = (set) => 
 
   selectedAirport: null,
   setSelectedAirport: (airport) => set(() => ({ selectedAirport: airport })),
+
+  filteredAirports: [],
+  setFilteredAirports: (airport) => set(() => ({ filteredAirports: airport })),
+
+  totalAirports: 0,
+  setTotalAirports: (total) => set(() => ({ totalAirports: total })),
 });

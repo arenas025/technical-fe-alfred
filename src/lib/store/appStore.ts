@@ -4,14 +4,9 @@ import { createJSONStorage, devtools, persist } from "zustand/middleware";
 
 // BL
 import { AirportSliceInterface, createAirportSlice } from "./airportSlice";
-import { createAppSlice } from "./appSlice";
+import { AppSliceInterface, createAppSlice } from "./appSlice";
 
-interface AppStoreInterface {
-  isLoading: boolean;
-  setIsLoading: (isLoading: boolean) => void;
-}
-
-type CombinedTypeSlice = AirportSliceInterface & AppStoreInterface;
+type CombinedTypeSlice = AirportSliceInterface & AppSliceInterface;
 
 export const useAppStore = create<CombinedTypeSlice>()(
   devtools(

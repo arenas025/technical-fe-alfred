@@ -7,13 +7,13 @@ import { useParams, useRouter } from "next/navigation";
 import useAppStore from "@/lib/store/appStore";
 
 // UI
-import Button from "@/UI/atoms/Button/Button";
 import Tabs from "@/UI/molecules/Tabs/Tabs";
 import DetailedAirportCard from "@/UI/organisms/DetailedAirportCard/DetailedAirportCard";
 import LocationAirportCard from "@/UI/organisms/LocationAirportCard/LocationAirportCard";
 import Map from "@/UI/atoms/Map/Map";
 import TimezoneCard from "@/UI/organisms/TimezoneCard/TimezoneCard";
 import LocalHourCard from "@/UI/organisms/LocalHourCard/LocalHourCard";
+import RefreshAirportsComponent from "@/UI/organisms/RefreshAirportsComponent/RefreshAirportsComponent";
 
 const AirportDetails = () => {
   const selectedAirport = useAppStore((state) => state.selectedAirport);
@@ -21,21 +21,11 @@ const AirportDetails = () => {
   const params = useParams();
 
   const [activeTab, setActiveTab] = useState("General");
-
   const headers = ["General", "Ubicación", "Zona horaria"];
 
   if (!selectedAirport || params.airportId !== selectedAirport.id) {
-    // extraer esto, puede usarse en el 404 ?
     return (
-      <div className=" h-screen  gap-3 flex flex-col items-center justify-center text-2xl font-bold font-inter">
-        <p className="text-white">Ups, no se encontró el aeropuerto</p>
-        <Button
-          variant="search"
-          className="!w-fit"
-          onClick={() => router.push("/")}
-          text="Volver a la pagina principal"
-        />
-      </div>
+      <RefreshAirportsComponent text="Ups, no se encontró el aeropuerto" />
     );
   }
 
@@ -86,7 +76,7 @@ const AirportDetails = () => {
   };
 
   return (
-    <div className="flex min-h-screen w-full flex-col items-center justify-start ">
+    <div className="flex min-h-screen w-full pb-10 flex-col items-center justify-start ">
       <div className="flex flex-col items-center mb-9 mt-5  justify-center">
         <p
           onClick={() => router.push("/")}

@@ -10,9 +10,13 @@ const CALLS_PER_PAGE_UI = 10;
 export const useGetAirports = () => {
   const setAllAirports = useAppStore((state) => state.setAllAirports);
   const setIsLoading = useAppStore((state) => state.setIsLoading);
+  const setTotalAirports = useAppStore((state) => state.setTotalAirports);
+  const setPage = useAppStore((state) => state.setPage);
   const setPaginatedAirports = useAppStore(
     (state) => state.setPaginatedAirports
   );
+  const setFilteredAirports = useAppStore((state) => state.setFilteredAirports);
+  const filteredAirports = useAppStore((state) => state.filteredAirports);
   const airports = useAppStore((state) => state.allAirports);
 
   const getAirports = useCallback(
@@ -49,34 +53,50 @@ export const useGetAirports = () => {
       const to = from + CALLS_PER_PAGE_UI;
 
       const APIOffset = Math.floor(from / 100);
-      const paginatedAirports = airports.slice(from, to);
+      const airportsToPaginate =
+        filteredAirports.length > 0 ? filteredAirports : airports;
+      const totalAirports = airportsToPaginate.length;
+      setTotalAirports(totalAirports);
+      const paginatedAirports = airportsToPaginate.slice(from, to);
       const isLastLocalPage =
         airports.length !== 0 && from + CALLS_PER_PAGE_UI > airports.length;
 
       if (isLastLocalPage) {
         getAirports(APIOffset);
+        return;
       }
       setPaginatedAirports(paginatedAirports);
     },
-    [setPaginatedAirports, airports, getAirports]
+    [
+      setPaginatedAirports,
+      airports,
+      getAirports,
+      setTotalAirports,
+      filteredAirports,
+    ]
   );
 
   const getPaginatedAirportsWithSearch = useCallback(
     async (offset: number, search: string) => {
-      const from = CALLS_PER_PAGE_UI * offset;
-      const to = from + CALLS_PER_PAGE_UI;
+      if (search === "") {
+        setFilteredAirports([]);
+        return;
+      }
+
+      const searchLowerCase = search.toLowerCase();
 
       const filteredAirports = airports.filter((airport) => {
         return (
-          airport.iata_code.toLowerCase().includes(search.toLowerCase()) ||
-          airport.airport_name.toLowerCase().includes(search.toLowerCase())
+          airport.iata_code.toLowerCase().startsWith(searchLowerCase) ||
+          airport.airport_name.toLowerCase().includes(searchLowerCase)
         );
       });
 
-      const paginatedAirports = filteredAirports.slice(from, to);
-      setPaginatedAirports(paginatedAirports);
+      setPage(0);
+
+      setFilteredAirports(filteredAirports);
     },
-    [setPaginatedAirports, airports]
+    [setPaginatedAirports, airports, setFilteredAirports, setPage]
   );
 
   return {

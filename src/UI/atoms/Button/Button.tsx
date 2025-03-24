@@ -2,7 +2,7 @@
 import { cn } from "@/lib/utils/utils";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  onClick: () => void;
+  onClick?: () => void;
   className?: string;
   text?: string;
   classNameText?: string;
