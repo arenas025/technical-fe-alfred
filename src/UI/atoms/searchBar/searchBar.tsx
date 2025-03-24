@@ -43,7 +43,6 @@ const SearchBar = () => {
           onChange={(e) => {
             setSearch(e.target.value);
           }}
-          data-testid="search-input"
           type="text"
           value={search}
           placeholder="Buscar aeropuertos..."

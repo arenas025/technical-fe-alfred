@@ -60,14 +60,9 @@ For end-to-end (E2E) tests with Cypress:
 ```bash
 pnpm run cypress
 ```
+Take into account that for E2E test you need to have the server running with the following command:
+```bash
+pnpm run dev
+```
 
 ---
-
-- **Missing environment variables?** Double-check your `.env` file.
-
-- **Dependency issues?** Clean and reinstall:
-  ```bash
-  rm -rf node_modules pnpm-lock.yaml
-  pnpm install
-  ```
-
