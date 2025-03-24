@@ -47,6 +47,7 @@ const DetailedAirportCard = ({
       className="hover:scale-none md:h-[350px] cursor-default"
       classNameContainerChildren=" justify-center items-center gap-10 py-10 flex-col"
       hasIcon={false}
+      id={iataCode}
       onClick={() => {}}
     >
       <div className="flex justify-center lg:justify-start lg:items-start items-center gap-5 w-[100%] md:w-[95%] break-words">

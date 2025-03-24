@@ -17,7 +17,7 @@ const GeneralAirportCard = ({
   onClick,
 }: GeneralAirportCardProps) => {
   return (
-    <AirportCard isGeneralCard hasIcon onClick={onClick}>
+    <AirportCard isGeneralCard hasIcon onClick={onClick} id={iataCodeCity}>
       <div className="flex flex-col gap-2  w-[80%] md:w-[95%] break-words">
         <p className="text-white text-lg font-bold font-inter lg:text-xl">
           {name}
