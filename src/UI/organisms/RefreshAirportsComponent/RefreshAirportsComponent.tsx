@@ -23,9 +23,13 @@ const RefreshAirportsComponent = ({
   );
   const router = useRouter();
   return (
-    <div className=" h-screen  gap-3 flex flex-col items-center justify-center text-2xl font-bold font-inter">
-      <p className=" text-center text-white">{text}</p>
+    <div
+      data-testid="refresh-airports-component"
+      className="h-screen  gap-3 flex flex-col items-center justify-center text-2xl font-bold font-inter"
+    >
+      <p className="text-center text-white">{text}</p>
       <Button
+        data-testid="refresh-airports-button"
         variant="search"
         className="!w-fit"
         onClick={() => {
