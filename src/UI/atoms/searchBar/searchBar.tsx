@@ -57,6 +57,7 @@ const SearchBar = () => {
               setSearchFilterApplied(false);
               getPaginatedAirportsWithSearch(0, "");
             }}
+            data-testid="clear-search-button"
             className="cursor-pointer rounded-full h-full px-5 bg-red-300"
           >
             <p className="text-white font-bold ">Limpiar</p>
